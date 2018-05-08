@@ -2,22 +2,26 @@
 @import 'bootstrap';
 @import 'global_variables.scss';
 
-/* universal */
-
-$gray-medium-light: #eaeaea;
-
 @mixin box_sizing {
-  -moz-box-sizing:    border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  box-sizing: border-box;
 }
 
 .debug_dump {
+  @include box_sizing;
   clear: both;
   float: left;
-  width: 100%;
   margin-top: 45px;
+  width: 100%;
+}
+
+.debug_dump {
   @include box_sizing;
+  clear: both;
+  float: left;
+  margin-top: 45px;
+  width: 100%;
 }
 
 body {
@@ -39,28 +43,6 @@ textarea {
   }
 }
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -69,14 +51,14 @@ p {
 /* header */
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+  float: left;
+  font-size: 1.7em;
   font-weight: bold;
+  letter-spacing: -1px;
+  margin-right: 10px;
+  padding-top: 9px;
+  text-transform: uppercase;
   &:hover {
     color: white;
     text-decoration: none;
@@ -86,16 +68,17 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
   a {
     color: $gray;
     &:hover {
       color: $gray-darker;
     }
   }
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  margin-top: 45px;
+  padding-top: 5px;
+
   small {
     float: left;
   }
@@ -129,10 +112,10 @@ aside {
     }
     h1 {
       font-size: 1.4em;
-      text-align: left;
       letter-spacing: -1px;
       margin-bottom: 3px;
       margin-top: 0px;
+      text-align: left;
     }
   }
 }
@@ -149,10 +132,10 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
   @include box_sizing;
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 input {
@@ -172,4 +155,27 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  color: $gray-light;
+  font-size: 1.2em;
+  font-weight: normal;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
 }
