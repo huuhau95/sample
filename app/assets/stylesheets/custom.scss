@@ -1,0 +1,174 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+$gray-medium-light: #eaeaea;
+
+/* universal */
+
+@mixin box_sizing {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  color: $gray-light;
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+.debug_dump {
+  @include box_sizing;
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* typography */
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  color: white;
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* sidebar */
+
+.gravatar {
+  margin-right: 10px;
+  float: left;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  @include box_sizing;
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* footer */
+
+footer {
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  margin-top: 45px;
+  padding-top: 5px;
+  
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
