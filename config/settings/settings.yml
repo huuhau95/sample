@@ -1,0 +1,7 @@
+validate:
+  email_max_length: 50
+  name_max_length: 255
+  min_length_password: 6
+  valid_email_regex: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  per_page: 5
+  image_size: 50
