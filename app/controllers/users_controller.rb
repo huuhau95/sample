@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
-    redirect_to root_url and return unless FILL_IN
+    @user = User.find params[:id]
+    redirect_to root_url && return unless @user.activated == true
   end
 
   def create
