@@ -116,3 +116,7 @@ en:
   this_link: "This link will expire in two hours."
   request_your_password: "If you did not request your password to be reset, please ignore this email and
 your password will stay as it is."
+  following: "Following"
+  followers: "Followers"
+  micropost_created: "Micropost created !"
+  micropost_deleted: "Micropost deleted !"

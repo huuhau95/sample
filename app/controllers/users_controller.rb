@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :loadUser
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
-  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :correct_user, only: :destroy
 
   def index
-    @users = User.where(activated:true).paginate(page: params[:page],per_page: 5)
+    @users = User.where(activated:true).paginate page: params[:page],per_page: 5
   end
 
   def new
@@ -12,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
-    @microposts = @user.microposts.paginate(page: params[:page],per_page: 5)
+    @microposts = @user.microposts.paginate page: params[:page],per_page: 5
     redirect_to root_url && return unless @user.activated == true
   end
 
@@ -33,11 +33,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find_by(params[:id])
     if @user.update_attributes user_params
       flash[:success] = t:profile_updated
       redirect_to @user
@@ -47,26 +45,30 @@ class UsersController < ApplicationController
   end
 
   def destroy
-      User.find_by(params[:id]).destroy
+      User.find_by params[:id].destroy
       flash[:success] = t:user_deleted
       redirect_to users_url
   end
   
   def following
-    @title = "Following"
-    @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    @title = t :following
+    @users = @user.following.paginate page: params[:page]
+    render :show_follow
   end
 
   def followers
-    @title = "Followers"
-    @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    @title = t :followers
+    
+    @users = @user.followers.paginate page: params[:page]
+    render :show_follow
   end
   
-  private 
+  private
+
+    def loadUser
+      @user  = User.find_by_id params[:id]
+    end
+
     def user_params
       params.require(:user).permit :email, :name, :password, :password_confirmation
     end
@@ -79,8 +81,9 @@ class UsersController < ApplicationController
       end
     end
 
+    # Confirms the correct user.
     def correct_user
-      @user = User.find params[:id]
+      @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 end

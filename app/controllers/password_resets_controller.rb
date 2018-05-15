@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
+    @user = User.find_by email: params[:password_reset][:email].downcase!
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
@@ -21,7 +21,7 @@ class PasswordResetsController < ApplicationController
   def update
     if params[:user][:password].empty?
       @user.errors.add(:password, t(:cant_empty))
-      render 'edit'
+      render :edit
     elsif @user.update_attributes(user_params)
       log_in @user
       @user.update_attribute(:reset_digest, nil)
