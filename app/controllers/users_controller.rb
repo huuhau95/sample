@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = @user.microposts.paginate(page: params[:page],per_page: 5)
     redirect_to root_url && return unless @user.activated == true
   end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
