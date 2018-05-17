@@ -1,13 +1,10 @@
-<% provide :title, t("about") %>
-
-<h1><%= t "about" %></h1>
-
+<% provide(:title, t("about")) %>
+<h1><%= t("about") %></h1>
 <p>
-  The <%= link_to "http://www.railstutorial.org/" do %>
-    <%= content_tag :em, t("ruby_on_rails") %>
+  <%= t("the") %> <%= link_to "http://www.railstutorial.org/" do %>
+  <%= content_tag :em, t("ruby_on_rails") %>
   <% end %> is a
-
   <%= link_to t("book"), "http://www.railstutorial.org/book" %> and
-  <%= link_to t("screencast"), "http://screencasts.railstutorial.org/" %> <%= t "teach_web" %>
-  <%= link_to t("ruby_on_rails"), "http://rubyonrails.org/" %> <%= t "sample_app" %>
+  <%= link_to t("screencast"), "http://screencasts.railstutorial.org/" %> <%= t("teach_web") %>
+  <%= link_to t("ruby_on_rails"), "http://rubyonrails.org/" %> <%= t("sample_app") %>
 </p>

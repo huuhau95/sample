@@ -24,3 +24,8 @@
 # Ignore Spring files.
 /spring/*.pid
 /test/*
+/Gemfile
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
