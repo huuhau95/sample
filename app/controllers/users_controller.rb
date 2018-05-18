@@ -8,18 +8,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
-    if @user.save
-      flash[:success] = t("wellcome")
+  	@user = User.new user_params
+  	if @user.save
+      log_in @user
+      remember @user
+      flash[:success] = t:wellcome
       redirect_to @user
     else
       render :new
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit :email, :name, :password, :password_confirmation
+  def forget
+    update_attribute :remember_digest, nil
   end
+
+  private
+    def user_params
+      params.require(:user).permit :email, :name, :password, :password_confirmation
+    end
 end
